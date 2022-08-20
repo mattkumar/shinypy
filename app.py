@@ -86,7 +86,8 @@ def server(input, output, session):
                      x=input.x(),
                      y=input.y(),
                      hue=input.trt(),
-                     palette = sns.color_palette("bright"))
+                     palette = sns.color_palette("bright"),
+                    scatter_kws={'linewidths':1,'edgecolor':'white'})
       return sns.move_legend(g, "lower center", bbox_to_anchor=(.5, 1), ncol=3, title=None, frameon=False,)
        
 
