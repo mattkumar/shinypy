@@ -31,14 +31,19 @@ app_ui = app_ui = ui.page_fluid(
             3,
             ui.div(
                 {"class": "nes-balloon from-left nes-pointer"},
+                ui.tags.i({"class": "nes-icon coin is-medium"}),
                 """
                 Upload a CSV to use for linear regression. You can also use sample data.
                 """,
-                ui.tags.br(), ui.tags.br(),ui.tags.br(),
-                    ui.input_file("file1", "Choose File", accept=[".csv"], multiple=False),
+                ui.tags.hr(),
+                    ui.row(ui.tags.i({"class": "nes-icon star is-medium"}),
+                           ui.input_file("file1", "Choose File", accept=[".csv"], multiple=False)
+                          ),
                     ui.tags.br(),  
+                    ui.tags.i({"class": "nes-icon heart is-medium"}),
                     ui.input_action_button("use_sample","Use Sample"),
-                    ui.tags.br(), ui.tags.br(),  
+                    ui.tags.hr(),
+                    ui.tags.br(),  
                     ui.output_ui("controls"),
                 
             ),
@@ -72,9 +77,12 @@ def server(input, output, session):
     def controls():
       req(input.use_sample() or input.file1())
       return ui.TagList(
-          ui.input_select("x", "Explanatory:", data().select_dtypes(include=np.number).columns.tolist()),
-          ui.input_select("y", "Response:", data().select_dtypes(include=np.number).columns.tolist()),
-          ui.input_select("trt", "Treatment:", list(data()))
+          ui.row(ui.tags.i({"class": "snes-jp-logo"}),
+                 ui.input_select("x", "Explanatory:", data().select_dtypes(include=np.number).columns.tolist())),
+          ui.row(ui.tags.i({"class": "nes-logo"}),
+                 ui.input_select("y", "Response:", data().select_dtypes(include=np.number).columns.tolist())),
+          ui.row(ui.tags.i({"class": "nes-jp-logo"}),
+                 ui.input_select("trt", "Treatment:", list(data())))
       )
 
     @output
