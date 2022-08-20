@@ -1,4 +1,4 @@
 # shinypy
 Shiny Meets Python
 
-Exploring Shiny for Python
+First steps into exploring Shiny for Python. Blog write up coming soon.
