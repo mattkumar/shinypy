@@ -82,7 +82,7 @@ def server(input, output, session):
           ui.row(ui.tags.i({"class": "nes-logo"}),
                  ui.input_select("y", "Response:", data().select_dtypes(include=np.number).columns.tolist())),
           ui.row(ui.tags.i({"class": "nes-jp-logo"}),
-                 ui.input_select("trt", "Treatment:", list(data())))
+                 ui.input_select("trt", "Stratification:", list(data())))
       )
 
     @output
